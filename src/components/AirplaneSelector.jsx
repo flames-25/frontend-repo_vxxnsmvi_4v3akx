@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import Spline from '@splinetool/react-spline'
 import { Plane, Gauge, Ruler, Flame, Info } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -10,7 +9,7 @@ const AIRCRAFTS = {
     rangeKm: 13650,
     seats: 426,
     fuelBurnLph: 7200,
-    spline: 'https://prod.spline.design/6YgJrY0q7YOhD06K/scene.splinecode',
+    image: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop',
   },
   'airbus-a380': {
     name: 'Airbus A380',
@@ -18,7 +17,7 @@ const AIRCRAFTS = {
     rangeKm: 15200,
     seats: 555,
     fuelBurnLph: 11700,
-    spline: 'https://prod.spline.design/wjEwcXwK3Yf0w3uA/scene.splinecode',
+    image: 'https://images.unsplash.com/photo-1567446188601-95f43044f6dc?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxBaXJidXMlMjBBMzgwfGVufDB8MHx8fDE3NjI2MjYzNjZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80',
   },
   'airbus-a350': {
     name: 'Airbus A350',
@@ -26,7 +25,7 @@ const AIRCRAFTS = {
     rangeKm: 15000,
     seats: 410,
     fuelBurnLph: 6200,
-    spline: 'https://prod.spline.design/Wx0c0f6m4gTO29a5/scene.splinecode',
+    image: 'https://images.unsplash.com/photo-1621560222298-0824faf9add5?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxBaXJidXMlMjBBMzUwfGVufDB8MHx8fDE3NjI2MjYzNjZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80',
   },
 }
 
@@ -36,11 +35,14 @@ export default function AirplaneSelector({ selectedAircraft, setSelectedAircraft
   return (
     <section className="relative max-w-6xl mx-auto px-4 py-8">
       <div className="grid lg:grid-cols-2 gap-6 items-stretch">
-        <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900 h-[420px]">
-          <div className="h-full w-full">
-            <Spline scene={aircraft.spline} style={{ width: '100%', height: '100%' }} />
-          </div>
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent dark:from-neutral-900/30" />
+        <div className="relative rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900 h-[420px]">
+          <img
+            src={aircraft.image}
+            alt={aircraft.name}
+            className="h-full w-full object-cover"
+            loading="eager"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
 
         <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 flex flex-col">
