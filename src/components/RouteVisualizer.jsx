@@ -29,7 +29,7 @@ const PRESETS = {
   },
 }
 
-export default function RouteVisualizer({ cruiseSpeedKmh, t }) {
+export default function RouteVisualizer({ cruiseSpeedKmh, t, onMetricsChange }) {
   const [preset, setPreset] = useState('jakarta-bali')
   const data = PRESETS[preset]
 
@@ -43,6 +43,13 @@ export default function RouteVisualizer({ cruiseSpeedKmh, t }) {
     const m = Math.round((hours - h) * 60)
     return `${h}h ${m}m`
   }, [hours])
+
+  // Notify parent when metrics change
+  useEffect(() => {
+    if (typeof onMetricsChange === 'function') {
+      onMetricsChange({ distanceKm, etaText: timeText })
+    }
+  }, [distanceKm, timeText, onMetricsChange])
 
   // Simple canvas world map with animated arc
   const canvasRef = useRef(null)

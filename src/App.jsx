@@ -123,6 +123,8 @@ export default function App() {
   const aircraft = AIRCRAFTS[selectedAircraft]
   const cruiseSpeedKmh = aircraft.speedKmh
 
+  const [routeMetrics, setRouteMetrics] = useState({ distanceKm: 800, etaText: lang==='en'? '~1h 30m' : '~1j 30m' })
+
   // naive AI suggestion based on preferences
   const aiTip = useMemo(() => {
     if (cruiseSpeedKmh > 930) return lang === 'en' ? 'Luxury flights — faster and roomier widebodies recommended.' : 'Penerbangan mewah — pesawat berbadan lebar yang lebih cepat dan lega direkomendasikan.'
@@ -136,10 +138,10 @@ export default function App() {
       <main className="py-6">
         <Hero t={t} />
         <AirplaneSelector selectedAircraft={selectedAircraft} setSelectedAircraft={setSelectedAircraft} t={t} />
-        <RouteVisualizer cruiseSpeedKmh={cruiseSpeedKmh} t={t} />
+        <RouteVisualizer cruiseSpeedKmh={cruiseSpeedKmh} t={t} onMetricsChange={setRouteMetrics} />
         <AISection title={t.ai.title} hint={t.ai.hint} tip={aiTip} />
         {/* Booking receives summary data; RouteVisualizer shows calc info visually */}
-        <BookingPanel aircraftName={aircraft.name} distanceKm={800} etaText={lang==='en'?'~1h 30m':'~1j 30m'} t={t} />
+        <BookingPanel aircraftName={aircraft.name} distanceKm={routeMetrics.distanceKm} etaText={routeMetrics.etaText} t={t} />
       </main>
 
       <Footer t={t} />
