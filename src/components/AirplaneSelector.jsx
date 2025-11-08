@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import Spline from '@splinetool/react-spline'
-import { Plane, Gauge, Ruler, Fuel, Info } from 'lucide-react'
+import { Plane, Gauge, Ruler, Flame, Info } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const AIRCRAFTS = {
@@ -64,7 +64,7 @@ export default function AirplaneSelector({ selectedAircraft, setSelectedAircraft
             <SpecCard icon={Gauge} label={t.airplaneSelector.cruise} value={`${aircraft.speedKmh} km/h`} />
             <SpecCard icon={Ruler} label={t.airplaneSelector.range} value={`${aircraft.rangeKm.toLocaleString()} km`} />
             <SpecCard icon={Info} label={t.airplaneSelector.seats} value={`${aircraft.seats} ${t.common.seats}`} />
-            <SpecCard icon={Fuel} label={t.airplaneSelector.fuel} value={`${aircraft.fuelBurnLph.toLocaleString()} L/h`} />
+            <SpecCard icon={Flame} label={t.airplaneSelector.fuel} value={`${aircraft.fuelBurnLph.toLocaleString()} L/h`} />
           </div>
 
           <p className="text-sm mt-4 text-neutral-600 dark:text-neutral-400">
