@@ -9,7 +9,7 @@ const AIRCRAFTS = {
     rangeKm: 13650,
     seats: 426,
     fuelBurnLph: 7200,
-    image: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1750027948449-5f9aa1f9349a?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxCb2VpbmclMjA3NzdYfGVufDB8MHx8fDE3NjI2MjY3Mzh8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80',
   },
   'airbus-a380': {
     name: 'Airbus A380',
